@@ -17,7 +17,7 @@ export const findProducts = (reqData) => async (dispatch) => {
     } = reqData;
     console.log("before : ",reqData)
     try {
-        const { data } = await api.get(`/api/products?color=${colors}&size=${sizes}&minPrice=${minPrice}&maxPrice=${maxPrice}&minDiscount=${minDiscount}&category=${category}&stock=${stock}&sort=${sort}&pageNumber=${pageNumber}&pageSize=${pageSize}`)
+        const { data } = await api.get(`https://e-commerce-backend-mgkx.onrender.com/api/products?color=${colors}&size=${sizes}&minPrice=${minPrice}&maxPrice=${maxPrice}&minDiscount=${minDiscount}&category=${category}&stock=${stock}&sort=${sort}&pageNumber=${pageNumber}&pageSize=${pageSize}`)
         // console.log("product Data : ", data);
         console.log("after data : ", data)
 
@@ -36,7 +36,7 @@ export const findProductsById = (reqData) => async (dispatch) => {
     const { productId } = reqData;
 
     try {
-        const { data } = await api.get(`/api/products/id/${productId}`)
+        const { data } = await api.get(`https://e-commerce-backend-mgkx.onrender.com/api/products/id/${productId}`)
         console.log("data : ",data)
 
         dispatch({ type: FIND_PRODUCT_BY_ID_SUCCESS, payload: data })
@@ -54,7 +54,7 @@ export const createProduct = (product) =>async(dispatch)=>{
         dispatch({type:CREATE_PRODUCT_REQUEST})
         console.log(" product : ", product)
 
-        const {data} = await api.post(`/api/admin/products/`,product);
+        const {data} = await api.post(`https://e-commerce-backend-mgkx.onrender.com/api/admin/products/`,product);
         console.log("create product : ",data)
         const val = dispatch({
             type:CREATE_PRODUCT_SUCCESS,
@@ -71,7 +71,7 @@ export const deleteProduct = (productId) => async (dispatch) => {
     try {
         dispatch({ type: DELETE_PRODUCT_REQUEST })
 
-        const { data } = await api.delete(`/api/admin/products/${productId}`);
+        const { data } = await api.delete(`https://e-commerce-backend-mgkx.onrender.com/api/admin/products/${productId}`);
         dispatch({
             type: DELETE_PRODUCT_SUCCESS,
             payload: productId,
