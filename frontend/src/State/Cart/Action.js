@@ -6,7 +6,7 @@ export const getCart = () => async (dispatch) => {
     dispatch({ type: GET_CART_REQUEST })
 
     try {
-        const { data } = await api.get(`/api/cart/`)
+        const { data } = await api.get(`https://e-commerce-backend-mgkx.onrender.com/api/cart/`)
         dispatch({ type: GET_CART_SUCCESS, payload: data })
         console.log("cartttss : ",data);
     }
@@ -25,7 +25,7 @@ export const addItemToCart = (reqData) => async (dispatch) => {
         console.log("adnan1")
         console.log("action req : ",reqData)
 
-        const { data } = await api.put("/api/cart/add",reqData)
+        const { data } = await api.put("https://e-commerce-backend-mgkx.onrender.com/api/cart/add",reqData)
         console.log("Add item to  Cart : ", data)
 
         console.log("adnan2")
@@ -42,7 +42,7 @@ export const removeCartItem = (cartItemId) => async (dispatch) => {
     dispatch({ type: REMOVE_CART_ITEM_REQUEST })
 
     try {
-        const { data } = await api.delete(`/api/cart_items/${cartItemId}`)
+        const { data } = await api.delete(`https://e-commerce-backend-mgkx.onrender.com/api/cart_items/${cartItemId}`)
         dispatch({ type: REMOVE_CART_ITEM_SUCCESS, payload: cartItemId })
     }
     catch (error) {
@@ -55,7 +55,7 @@ export const updateCartItem = (reqData) => async (dispatch) => {
     dispatch({ type: UPDATE_CART_ITEM_REQUEST })
 
     try {
-        const { data } = await api.put(`/api/cart_items/${reqData.cartItemId}`, reqData.data)
+        const { data } = await api.put(`https://e-commerce-backend-mgkx.onrender.com/api/cart_items/${reqData.cartItemId}`, reqData.data)
         dispatch({ type: UPDATE_CART_ITEM_SUCCESS, payload: data })
     }
     catch (error) {
