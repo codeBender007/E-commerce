@@ -9,7 +9,7 @@ export const createOrder = (reqData) => async (dispatch) =>{
     try{
 console.log('fame')
         const { data } = await api.post(
-            `/api/orders/`,
+            `https://e-commerce-backend-mgkx.onrender.com/api/orders/`,
             reqData.address,
         );
         console.log("data : ",data)
@@ -37,7 +37,7 @@ export const getOrderById = (orderId) => async (dispatch) =>{
     dispatch({type: GET_ORDER_BY_ID_REQUEST});
     try{
         const { data } = await api.get(
-            `/api/orders/${orderId}`,
+            `https://e-commerce-backend-mgkx.onrender.com/api/orders/${orderId}`,
         );
         console.log("import : ",data)
         dispatch({
