@@ -8,7 +8,7 @@ export const getOrders = () => {
     return async (dispatch)=>{
         dispatch({type:GET_ORDERS_REQUEST});
         try{
-            const response = await api.get("/api/admin/orders/");
+            const response = await api.get("https://e-commerce-backend-mgkx.onrender.com/api/admin/orders/");
             console.log("get all orders : ",response.data);
             dispatch({type:GET_ORDERS_SUCCESS,payload: response.data});
         }
@@ -24,7 +24,7 @@ export const confirmOrder = (orderId) => async (dispatch) =>{
     dispatch({type:CONFIRMED_ORDER_REQUEST});
     try{
         const response = await api.put(
-            `/api/admin/orders/${orderId}/confirmed`
+            `https://e-commerce-backend-mgkx.onrender.com/api/admin/orders/${orderId}/confirmed`
         );
         const data = response.data;
         console.log("confirm_order : ",data);
@@ -41,7 +41,7 @@ export const shipOrder = (orderId) =>{
     return async (dispatch) =>{
         try{
             dispatch({type:SHIP_ORDER_REQUEST});
-            const {data} = await api.put(`/api/admin/orders/${orderId}/ship`);
+            const {data} = await api.put(`https://e-commerce-backend-mgkx.onrender.com/api/admin/orders/${orderId}/ship`);
             console.log("shipped order : ",data);
             dispatch({type:SHIP_ORDER_SUCCESS,payload:data});
         }
@@ -56,7 +56,7 @@ export const shipOrder = (orderId) =>{
 export const deliveredOrder = (orderId) => async (dispatch)=>{
     dispatch({DELIVERED_ORDER_REQUEST});
     try{
-        const response = await api.put(`/api/admin/orders/${orderId}/deliver`);
+        const response = await api.put(`https://e-commerce-backend-mgkx.onrender.com/api/admin/orders/${orderId}/deliver`);
         const data = response.data;
         dispatch({type:DELIVERED_ORDER_SUCCESS,payload:data});
     }
@@ -85,7 +85,7 @@ export const deleteOrder = (orderId) => {
         dispatch({type:DELETE_ORDER_REQUEST});
 
         try{    
-            const {data} = await api.delete(`/api/admin/orders/${orderId}/delete`);
+            const {data} = await api.delete(`https://e-commerce-backend-mgkx.onrender.com/api/admin/orders/${orderId}/delete`);
             dispatch({type:DELETE_ORDER_SUCCESS,payload:data});
         }
         catch(error){
