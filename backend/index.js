@@ -48,8 +48,8 @@ app.use("api/ratings",ratingRouter);
 // module.exports = app
 const connectdb = require("./config/db")
 
-const PORT = 4000;
+const PORT = 3000;
 app.listen(PORT, () => {
     connectdb();
-    console.log("run on 4000 port", PORT)
+    console.log("run on 3000 port", PORT)
 })
